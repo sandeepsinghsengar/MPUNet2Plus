@@ -152,7 +152,9 @@ file named ```train_hparams.yaml```, which stores all hyperparameters. Any
 parameter in this file may be specified manually, but can all be set 
 automatically.
 
-**NOTE:** By default the ```init_project``` prepares a Multi-Planar model. 
+**NOTE:** By default the ```init_project``` prepares a Multi-Planar model UNet. However,
+for MPUNet2+, MPUNet2+ DS, MPUNet3+, MPUNet3+ DS just replace model_class_name in 
+train_hparams.yaml as 'UNet2Plus', 'UNet2Plus_deep', 'UNet3Plus', 'UNet3Plus_deep' respectively.
 However, note that a 3D model is also supported, which can be selected by 
 specifying the ```--model=3D``` flag (default=```---model=MultiPlanar```).
 
