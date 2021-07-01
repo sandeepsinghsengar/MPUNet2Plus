@@ -51,7 +51,7 @@ Available scripts:
 ```
 
 ## Overview
-In this project, we implement knee cartilages from 3D MRI images. It uses a fixed 
+In this project, we implement knee cartilages segmentation from 3D MRI images. It uses a fixed 
 hyperparameter set and a fixed model topology, eliminating the need for
 conducting hyperparameter tuning experiments. No manual involvement is 
 required except for supplying the training data.
