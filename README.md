@@ -13,7 +13,7 @@ Sandeep Singh Sengar, Christopher Meulengracht, Mikael Boesen, Erik Bjørnager D
 
 ```
 # From GitHub
-git clone https://github.com/perslev/MultiPlanarUNet
+git clone https://github.com/sandeepsinghsengar/MPUNet2Plus
 pip install -e MultiPlanarUNet
 ```
 
@@ -22,14 +22,13 @@ the package with PIP with the -e ('editable') flag so that the package can be
 updated with recent changes on GitHub without re-installing:
 
 ```
-cd MultiPlanarUNet
+cd MPUNet2Plus
 git pull
 ```
 
 However, the package is also occasionally updated on PyPi for install with:
 
 ```
-# Note: renamed MultiPlanarUNet -> mpunet in versions 0.2.4
 pip install mpunet
 ```
 
@@ -52,36 +51,23 @@ Available scripts:
 ```
 
 ## Overview
-This package implements fully autonomous deep learning based 
-segmentation of any 3D medical image. It uses a fixed 
+In this project, we implement knee cartilages from 3D MRI images. It uses a fixed 
 hyperparameter set and a fixed model topology, eliminating the need for
 conducting hyperparameter tuning experiments. No manual involvement is 
 required except for supplying the training data.
 
-The system has been evaluated on a wide range of tasks covering various organ and 
-pathology segmentation tasks, tissue types, and imaging modalities. 
-The model obtained a top-5 position at the 2018 Medical Segmentation Decathlon 
-(http://medicaldecathlon.com/) despite its simplicity and computational 
-efficiency.
-
 This software may be used as-is and does not require deep learning expertise to
 get started. It may also serve as a strong baseline method for general purpose
-semantic segmentation of medical images.
+semantic segmentation of medical images. 
 
 ## Method
-The base model is a slightly modified 2D U-Net (https://arxiv.org/abs/1505.04597) 
+The base model is a MPUNet (https://link.springer.com/chapter/10.1007%2F978-3-030-32245-8_4) 
 trained under a multi-planar framework. Specifically, the 2D model is
 fed images sampled across multiple views onto the image volume simultaneously:
-
-[Multi-Planar Animation](resources/multi_planar_training.gif)
 
 At test-time, the model predict along each of the views and recreates a set of full segmentation volumes. 
 These volumes are fused into one using a learned function that weights
 each class from each view individually to maximise the performance.
-
-![](resources/multi_planar_model_updated.png)
-
-![](resources/multi_planar_augmentation.png)
 
 ## Usage
 
@@ -235,30 +221,30 @@ mp summary
 
 >> [***] SUMMARY REPORT FOR FOLDER [***]
 >> ./my_project/predictions/csv/
->> 
->> 
->> Per class:
->> --------------------------------
->>    Mean dice by class  +/- STD    min    max   N
->> 1               0.856    0.060  0.672  0.912  34
->> 2               0.891    0.029  0.827  0.934  34
->> 3               0.888    0.027  0.829  0.930  34
->> 4               0.802    0.164  0.261  0.943  34
->> 5               0.819    0.075  0.552  0.926  34
->> 6               0.863    0.047  0.663  0.917  34
->> 
->> Overall mean: 0.853 +- 0.088
->> --------------------------------
->> 
->> By views:
->> --------------------------------
->> [0.8477811  0.50449719 0.16355361]          0.825
->> [ 0.70659414 -0.35532932  0.6119361 ]       0.819
->> [ 0.11799461 -0.07137918  0.9904455 ]       0.772
->> [ 0.95572575 -0.28795306  0.06059151]       0.827
->> [-0.16704373 -0.96459936  0.20406974]       0.810
->> [-0.72188903  0.68418977  0.10373322]       0.819
->> --------------------------------
+
+Per class:
+--------------------------------
+   Mean dice by class  +/- STD    min    max     N
+1               0.864    0.048  0.762  0.909  12.0
+2               0.894    0.030  0.836  0.935  12.0
+3               0.867    0.033  0.811  0.908  12.0
+4               0.872    0.029  0.814  0.910  12.0
+5               0.784    0.099  0.513  0.888  12.0
+6               0.885    0.023  0.854  0.924  12.0
+7               0.821    0.062  0.715  0.907  12.0
+
+Overall mean: 0.855 +- 0.064
+--------------------------------
+
+By views:
+--------------------------------
+[0.57406369 0.47896061 0.66411416]          0.831
+[-0.3293134  -0.44678534  0.83182663]       0.826
+[-0.72437777 -0.19562568  0.66106539]       0.831
+[0.90493367 0.3948961  0.1585942 ]          0.831
+[ 0.91287375 -0.38892643  0.12408769]       0.832
+[ 0.13321251 -0.10837507  0.98514429]       0.799
+--------------------------------
 ```
 
 ## Cross Validation Experiments
