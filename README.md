@@ -1,6 +1,6 @@
-# MPUNet2+
+# Unet Architectures in Multiplanar Volumetric Segmentation
 
-Implementation of the MPUNet2+ as described in: 
+Implementation of the Unet Architectures in Multiplanar Volumetric Segmentation as described in: 
 
 Sandeep Singh Sengar, Christopher Meulengracht, Mikael Boesen, Erik Bjørnager Dam. Unet Architectures in Multiplanar Volumetric Segmentation - Validated on 3 Knee MRI Cohorts. In: Computers in Biology and Medicine
 
