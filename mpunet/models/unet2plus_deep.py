@@ -27,7 +27,7 @@ class UNet2Plus_up_deep(Model):
                  n_channels=1,
                  depth=4,
                  out_activation="softmax",
-                 activation="elu",
+                 activation="relu",
                  kernel_size=3,
                  padding="same",
                  complexity_factor=1,
