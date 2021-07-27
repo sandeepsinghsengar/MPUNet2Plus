@@ -13,7 +13,7 @@ from tensorflow import keras
 import tensorflow as tf
 
 ## Nested block
-class UNet2Plus_up_deep(Model):
+class UNet2Plus_deep(Model):
     """
     2D UNet implementation with batch normalization and complexity factor adj.
 
